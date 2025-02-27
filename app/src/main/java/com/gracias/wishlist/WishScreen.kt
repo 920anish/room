@@ -26,3 +26,5 @@ fun WishScreen(modifier:Modifier, onNavigateBack: () -> Unit) {
 
     }
 }
+
+

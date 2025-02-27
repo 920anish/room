@@ -7,3 +7,6 @@ object HomeScreen
 
 @Serializable
 object WishScreen
+
+@Serializable
+object DetailScreen

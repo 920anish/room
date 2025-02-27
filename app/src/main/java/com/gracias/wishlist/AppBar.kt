@@ -24,7 +24,7 @@ fun AppBar(title: String , onNavigationBack: () -> Unit) {
 
 
         navigationIcon = {
-            if(!title.contains("Wishlist App")) {
+
                 IconButton(onClick = onNavigationBack ) {
                     Icon(
                         imageVector =   Icons.AutoMirrored.Rounded.ArrowBack,
@@ -32,7 +32,7 @@ fun AppBar(title: String , onNavigationBack: () -> Unit) {
                     )
 
                 }
-            }
+
 
         }
 

@@ -7,8 +7,9 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 
 @Composable
-fun Navigation(modifier: Modifier, navController: NavHostController ) {
+fun Navigation(modifier: Modifier, navController: NavHostController , viewModel: WishViewModel) {
     NavHost(
+
         navController = navController,
         startDestination = HomeScreen
     ){
@@ -19,7 +20,7 @@ fun Navigation(modifier: Modifier, navController: NavHostController ) {
                 modifier = modifier,
                 onNavigateToWishlistScreen = {
                     navController.navigate(
-                        route = WishScreen
+                        route = DetailScreen
                     )
                 },
             )
@@ -36,6 +37,13 @@ fun Navigation(modifier: Modifier, navController: NavHostController ) {
             )
 
 
+        }
+
+        composable<DetailScreen> {
+            DetailScreen(
+                modifier = modifier,
+                viewModel = viewModel
+            )
         }
 
     }
