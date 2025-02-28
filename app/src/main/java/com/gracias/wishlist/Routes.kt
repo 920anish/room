@@ -3,10 +3,10 @@ package com.gracias.wishlist
 import kotlinx.serialization.Serializable
 
 @Serializable
-object HomeScreen
+object Home
 
 @Serializable
-object WishScreen
+object Add
 
 @Serializable
-object DetailScreen
+object Edit

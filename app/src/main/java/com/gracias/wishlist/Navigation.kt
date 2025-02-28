@@ -1,5 +1,7 @@
 package com.gracias.wishlist
 
+import androidx.compose.animation.EnterTransition
+import androidx.compose.animation.ExitTransition
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
@@ -11,38 +13,49 @@ fun Navigation(modifier: Modifier, navController: NavHostController , viewModel:
     NavHost(
 
         navController = navController,
-        startDestination = HomeScreen
+        startDestination = Home,
+        enterTransition = {
+            EnterTransition.None
+        },
+        exitTransition = {
+            ExitTransition.None
+        },
+        popEnterTransition = {
+            EnterTransition.None
+        },
+        popExitTransition = {
+            ExitTransition.None
+        }
+
     ){
-
-        composable<HomeScreen> {
-
+        composable<Home> {
             HomeScreen(
                 modifier = modifier,
                 onNavigateToWishlistScreen = {
+                    title ,description ->
+                    viewModel.getEditedTitle(title)
+                    viewModel.getEditedDescription(description)
                     navController.navigate(
-                        route = DetailScreen
+                        route = Edit
                     )
                 },
             )
 
 
         }
-        composable<WishScreen> {
-
-            WishScreen(
-                onNavigateBack = {
-                    navController.navigateUp()
-                },
-                modifier = modifier
-            )
 
 
-        }
-
-        composable<DetailScreen> {
-            DetailScreen(
+        composable<Add> {
+            AddScreen(
                 modifier = modifier,
                 viewModel = viewModel
+            )
+        }
+
+        composable<Edit> {
+            EditScreen(
+                modifier = modifier,
+                viewModel = viewModel,
             )
         }
 

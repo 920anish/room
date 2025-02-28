@@ -15,7 +15,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun HomeScreen( modifier: Modifier, onNavigateToWishlistScreen: () -> Unit) {
+fun HomeScreen( modifier: Modifier, onNavigateToWishlistScreen: (title:String , description:String) -> Unit) {
     val wishList = listOf(
         Wish(1 , "Pixel 9 Pro XL" , "All in for the best software Experience"),
         Wish(2 , "Mechanical Gaming Keyboard" , "All in for the best Clickity Click Experience"),
@@ -27,7 +27,8 @@ fun HomeScreen( modifier: Modifier, onNavigateToWishlistScreen: () -> Unit) {
        modifier = modifier.fillMaxSize().padding(4.dp)
    ){
        items(wishList) {
-           item -> WishItem(wish =  item , onNavigateToWishlistScreen)
+           item -> WishItem(wish =  item
+       ) { onNavigateToWishlistScreen(item.title, item.description) }
        }
 
 

@@ -32,7 +32,7 @@ class MainActivity : ComponentActivity() {
                     floatingActionButton = {
                         FloatingActionButton(
                             onClick = {
-                                navController.navigate(route = DetailScreen)
+                                navController.navigate(route = Add)
                             }
 
                         ) {

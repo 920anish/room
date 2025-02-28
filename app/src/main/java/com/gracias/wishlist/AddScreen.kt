@@ -16,7 +16,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 @Composable
-fun DetailScreen(modifier: Modifier, viewModel: WishViewModel) {
+fun AddScreen(modifier: Modifier, viewModel: WishViewModel) {
 
 
     Column(
