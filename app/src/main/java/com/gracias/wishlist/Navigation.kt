@@ -39,7 +39,16 @@ fun Navigation(modifier: Modifier, navController: NavHostController , viewModel:
                         route = Edit
                     )
                 },
+
+                onNavigateToAdd = {
+                    navController.navigate(
+                        route = Add
+                    )
+                }
             )
+
+
+
 
 
         }
