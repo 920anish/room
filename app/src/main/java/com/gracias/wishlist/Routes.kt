@@ -9,4 +9,4 @@ object Home
 object Add
 
 @Serializable
-object Edit
+data class Edit(val id:Long)

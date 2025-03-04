@@ -1,12 +1,11 @@
 package com.gracias.wishlist
 
-import androidx.compose.animation.EnterTransition
-import androidx.compose.animation.ExitTransition
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import androidx.navigation.toRoute
 
 @Composable
 fun Navigation(modifier: Modifier, navController: NavHostController , viewModel: WishViewModel) {
@@ -14,29 +13,29 @@ fun Navigation(modifier: Modifier, navController: NavHostController , viewModel:
 
         navController = navController,
         startDestination = Home,
-        enterTransition = {
-            EnterTransition.None
-        },
-        exitTransition = {
-            ExitTransition.None
-        },
-        popEnterTransition = {
-            EnterTransition.None
-        },
-        popExitTransition = {
-            ExitTransition.None
-        }
+        //meh animation but kinda smooth to not use
+//        enterTransition = {
+//            EnterTransition.None
+//        },
+//        exitTransition = {
+//            ExitTransition.None
+//        },
+//        popEnterTransition = {
+//            EnterTransition.None
+//        },
+//        popExitTransition = {
+//            ExitTransition.None
+//        }
 
     ){
         composable<Home> {
             HomeScreen(
+                viewModel = viewModel,
                 modifier = modifier,
-                onNavigateToWishlistScreen = {
-                    title ,description ->
-                    viewModel.getEditedTitle(title)
-                    viewModel.getEditedDescription(description)
+                onNavigateToEdit = {
+
                     navController.navigate(
-                        route = Edit
+                        route = Edit(it)
                     )
                 },
 
@@ -46,25 +45,25 @@ fun Navigation(modifier: Modifier, navController: NavHostController , viewModel:
                     )
                 }
             )
-
-
-
-
-
         }
 
 
         composable<Add> {
             AddScreen(
+                navController = navController,
                 modifier = modifier,
                 viewModel = viewModel
             )
         }
 
         composable<Edit> {
+            val id = it.toRoute<Edit>().id
             EditScreen(
+                navController =navController,
                 modifier = modifier,
                 viewModel = viewModel,
+                id = id
+
             )
         }
 

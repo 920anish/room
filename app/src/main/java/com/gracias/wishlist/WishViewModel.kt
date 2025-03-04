@@ -3,10 +3,17 @@ package com.gracias.wishlist
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.launch
 
-class WishViewModel : ViewModel() {
+class WishViewModel(private val offlineWishRepository: OfflineWishRepository = AppContainer.offlineWishRepository) : ViewModel() {
 
-    //for add screen
+
+    //TODO optimize this and remove code duplication
+
+    //for add screen  text field
      private val _titleState =   mutableStateOf("")
      private val _descriptionState =   mutableStateOf("")
 
@@ -21,7 +28,7 @@ class WishViewModel : ViewModel() {
         _descriptionState.value= newDescription
     }
 
-    //for edit screen
+    //for edit screen text field
     private val _editTitleState = mutableStateOf("")
     private val _editDescriptionState = mutableStateOf("")
 
@@ -36,5 +43,33 @@ class WishViewModel : ViewModel() {
     }
 
 
+    val allWishes : Flow<List<Wish>> = offlineWishRepository.getAllStream()
+
+    fun getWishById(id:Long) : Flow<Wish> = offlineWishRepository.getItemStream(id)
+
+
+    fun insertWish(wishItem : Wish)  {
+        viewModelScope.launch(Dispatchers.IO) {
+            offlineWishRepository.insertItem(wishItem)
+        }
+    }
+
+    fun updateWish(wishItem: Wish) {
+        viewModelScope.launch(Dispatchers.IO) {
+            offlineWishRepository.updateItem(wishItem)
+        }
+    }
+
+    fun deleteWish(wishItem: Wish){
+        viewModelScope.launch{
+            offlineWishRepository.deleteItem(wishItem)
+        }
+    }
+
+
+    fun clearField() {
+        _titleState.value = ""
+        _descriptionState.value = ""
+    }
 
 }

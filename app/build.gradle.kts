@@ -4,23 +4,17 @@ plugins {
     alias(libs.plugins.kotlin.compose)
     id("com.google.devtools.ksp")
     kotlin("plugin.serialization") version "2.1.10"
-
-
-
 }
 
 android {
     namespace = "com.gracias.wishlist"
     compileSdk = 35
-
-
     defaultConfig {
         applicationId = "com.gracias.wishlist"
         minSdk = 24
         targetSdk = 35
         versionCode = 1
         versionName = "1.0"
-
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -47,14 +41,13 @@ android {
 
 dependencies {
     //added dependencies
-
-
     implementation(libs.androidx.room.runtime)
     ksp(libs.androidx.room.compiler)
     implementation(libs.androidx.navigation.compose)
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
     implementation(libs.androidx.lifecycle.viewmodel.compose)
     implementation(libs.kotlinx.serialization.json)
+    implementation(libs.androidx.room.ktx)
 
 
 
