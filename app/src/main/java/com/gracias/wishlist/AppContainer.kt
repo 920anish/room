@@ -3,6 +3,7 @@ package com.gracias.wishlist
 import android.content.Context
 import androidx.room.Room
 
+//TODO Inject DI with Hilt plus Structure dirs
 object AppContainer {
 
     private lateinit var database: WishDatabase
