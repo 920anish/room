@@ -1,4 +1,4 @@
-package com.gracias.wishlist
+package com.gracias.wishlist.data.local
 
 import androidx.room.Dao
 import androidx.room.Delete
@@ -6,6 +6,7 @@ import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import androidx.room.Update
+import com.gracias.wishlist.data.local.entities.Wish
 import kotlinx.coroutines.flow.Flow
 
 @Dao
@@ -14,7 +15,7 @@ interface WishDao {
     suspend fun insert(wishItem: Wish)
 
     @Update
-    suspend fun update(wishItem:Wish)
+    suspend fun update(wishItem: Wish)
 
     @Delete
     suspend fun delete(wishItem: Wish)

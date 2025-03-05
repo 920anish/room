@@ -1,7 +1,8 @@
-package com.gracias.wishlist
+package com.gracias.wishlist.data.local
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
+import com.gracias.wishlist.data.local.entities.Wish
 
 @Database(
     entities = [Wish::class],
@@ -10,6 +11,6 @@ import androidx.room.RoomDatabase
 )
 
 abstract class WishDatabase: RoomDatabase() {
-    abstract fun wishDao():WishDao
+    abstract fun wishDao(): WishDao
 
 }

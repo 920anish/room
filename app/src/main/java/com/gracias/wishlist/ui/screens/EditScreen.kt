@@ -1,4 +1,4 @@
-package com.gracias.wishlist
+package com.gracias.wishlist.ui.screens
 
 import android.annotation.SuppressLint
 import androidx.compose.foundation.layout.Column
@@ -23,6 +23,8 @@ import androidx.compose.ui.graphics.RectangleShape
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
+import com.gracias.wishlist.data.local.entities.Wish
+import com.gracias.wishlist.ui.viewmodel.WishViewModel
 import kotlinx.coroutines.launch
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")

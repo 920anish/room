@@ -1,4 +1,4 @@
-package com.gracias.wishlist
+package com.gracias.wishlist.ui.screens
 
 import android.annotation.SuppressLint
 import androidx.compose.animation.AnimatedVisibility
@@ -46,6 +46,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.IntOffset
 import androidx.compose.ui.unit.dp
+import com.gracias.wishlist.data.local.entities.Wish
+import com.gracias.wishlist.ui.viewmodel.WishViewModel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import kotlin.math.roundToInt

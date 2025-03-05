@@ -1,4 +1,4 @@
-package com.gracias.wishlist
+package com.gracias.wishlist.data.local.entities
 
 import androidx.room.ColumnInfo
 import androidx.room.Entity

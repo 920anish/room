@@ -1,4 +1,4 @@
-package com.gracias.wishlist
+package com.gracias.wishlist.ui.navigation
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -6,6 +6,10 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.toRoute
+import com.gracias.wishlist.ui.screens.AddScreen
+import com.gracias.wishlist.ui.screens.EditScreen
+import com.gracias.wishlist.ui.screens.HomeScreen
+import com.gracias.wishlist.ui.viewmodel.WishViewModel
 
 @Composable
 fun Navigation(modifier: Modifier, navController: NavHostController , viewModel: WishViewModel) {

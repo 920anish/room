@@ -1,15 +1,21 @@
-package com.gracias.wishlist
+package com.gracias.wishlist.ui.viewmodel
 
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.gracias.wishlist.data.local.entities.Wish
+import com.gracias.wishlist.data.repository.WishRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.launch
 
-class WishViewModel(private val offlineWishRepository: OfflineWishRepository = AppContainer.offlineWishRepository) : ViewModel() {
-
+@HiltViewModel
+class WishViewModel @Inject constructor(
+    private val wishRepository: WishRepository
+) : ViewModel() {
 
     //TODO optimize this and remove code duplication
 
@@ -43,26 +49,26 @@ class WishViewModel(private val offlineWishRepository: OfflineWishRepository = A
     }
 
 
-    val allWishes : Flow<List<Wish>> = offlineWishRepository.getAllStream()
+    val allWishes : Flow<List<Wish>> = wishRepository.getAllStream()
 
-    fun getWishById(id:Long) : Flow<Wish> = offlineWishRepository.getItemStream(id)
+    fun getWishById(id:Long) : Flow<Wish> = wishRepository.getItemStream(id)
 
 
     fun insertWish(wishItem : Wish)  {
         viewModelScope.launch(Dispatchers.IO) {
-            offlineWishRepository.insertItem(wishItem)
+            wishRepository.insertItem(wishItem)
         }
     }
 
     fun updateWish(wishItem: Wish) {
         viewModelScope.launch(Dispatchers.IO) {
-            offlineWishRepository.updateItem(wishItem)
+            wishRepository.updateItem(wishItem)
         }
     }
 
     fun deleteWish(wishItem: Wish){
         viewModelScope.launch{
-            offlineWishRepository.deleteItem(wishItem)
+            wishRepository.deleteItem(wishItem)
         }
     }
 

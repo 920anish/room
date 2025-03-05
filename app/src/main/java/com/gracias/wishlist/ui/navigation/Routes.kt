@@ -1,4 +1,4 @@
-package com.gracias.wishlist
+package com.gracias.wishlist.ui.navigation
 
 import kotlinx.serialization.Serializable
 
