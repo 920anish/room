@@ -139,13 +139,13 @@ fun WishItem(
                 val result = snackbarHostState.showSnackbar(
                     message = "Wish deleted",
                     actionLabel = "Undo",
-                    duration = SnackbarDuration.Long
+                    duration = SnackbarDuration.Short
                 )
 
                 if (result == SnackbarResult.ActionPerformed) {
                     isVisible = true
                 } else {
-                    delay(1000)
+                    delay(10)
                     viewModel.deleteWish(wish)
                 }
 

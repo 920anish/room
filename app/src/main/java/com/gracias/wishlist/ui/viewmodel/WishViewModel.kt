@@ -73,8 +73,9 @@ class WishViewModel @Inject constructor(
 
 
     fun clearField() {
-        _titleState.value = ""
         _descriptionState.value = ""
+        _titleState.value = ""
+
     }
 
 }
