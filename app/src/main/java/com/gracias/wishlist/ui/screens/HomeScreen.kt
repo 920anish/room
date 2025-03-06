@@ -170,6 +170,9 @@ fun WishItem(
                 modifier = Modifier
                     .align(Alignment.CenterEnd)
                     .padding(end = 8.dp)
+                    .clickable {
+                        viewModel.deleteWish(wish)
+                    }
             )
             Card(
                 modifier = Modifier

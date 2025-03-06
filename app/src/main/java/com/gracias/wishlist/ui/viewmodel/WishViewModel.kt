@@ -17,7 +17,6 @@ class WishViewModel @Inject constructor(
     private val wishRepository: WishRepository
 ) : ViewModel() {
 
-    //TODO optimize this and remove code duplication
 
     //for add screen  text field
      private val _titleState =   mutableStateOf("")
